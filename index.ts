@@ -28,7 +28,7 @@ mongoose
 
 // Configuring port number
 let port =
-  process.env.NODE_ENV === 'production' ? process.env.PORT || 5001 : 6001;
+  process.env.NODE_ENV === 'production' ? process.env.PORT || 5000 : 6000;
 
 console.log(port);
 

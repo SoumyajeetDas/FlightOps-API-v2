@@ -1,6 +1,7 @@
 import express from 'express';
 import { Response } from 'express';
 import cors from 'cors';
+import contentRouter from './routes/contentRouter';
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.use(
 //     origin: ['https://main--bejewelled-longma-891e99.netlify.app', 'http://localhost:3000']
 // }));
 
-// app.use("/api/v1/fops/contents",contentRouter)
+app.use('/api/v1/fops/contents', contentRouter);
 
 // app.use("/api/v1/fops/sevs",sevRouter)
 

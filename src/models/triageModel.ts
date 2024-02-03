@@ -1,6 +1,6 @@
 import { getModelForClass, prop } from '@typegoose/typegoose';
 
-class TriagesClass {
+class Triages {
   @prop({ required: [true, 'Please provide the name'], unique: true })
   public name!: string;
 
@@ -8,6 +8,6 @@ class TriagesClass {
   public path!: string;
 }
 
-const TriageModel = getModelForClass(TriagesClass);
+const TriageModel = getModelForClass(Triages);
 
 export default TriageModel;
