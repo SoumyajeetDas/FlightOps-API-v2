@@ -1,6 +1,6 @@
 import { getModelForClass, prop } from '@typegoose/typegoose';
 
-class Sev {
+class SevDatas {
   @prop({
     required: [true, 'Please provide the title of the Ticket'],
     unique: true,
@@ -52,6 +52,6 @@ class Sev {
   public link: string | undefined;
 }
 
-const SevModel = getModelForClass(Sev);
+const SevModel = getModelForClass(SevDatas);
 
 export default SevModel;

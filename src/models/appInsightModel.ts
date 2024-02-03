@@ -1,7 +1,7 @@
 import { getModelForClass, prop } from '@typegoose/typegoose';
 
-class Paths {
-  @prop({ required: [true, 'Please provide the name'], unique: true })
+class AppInsights {
+  @prop({ required: [true, 'Please enter the name'], unique: true })
   public name!: string;
 
   @prop({
@@ -11,9 +11,11 @@ class Paths {
       message: 'Please enter the paths',
     },
   })
-  path!: string[];
+  public path!: string[];
+
+  public note?: string;
 }
 
-const PathModel = getModelForClass(Paths);
+const AppInsightModel = getModelForClass(AppInsights);
 
-export default PathModel;
+export default AppInsightModel;
