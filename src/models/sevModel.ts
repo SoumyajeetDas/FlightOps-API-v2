@@ -55,8 +55,8 @@ class SevDatas {
   @prop({ required: [true, 'Please enter the description'] })
   public description!: string;
 
-  @prop({ trim: true })
-  public link: string | undefined;
+  @prop({ trim: true, default: '' })
+  public link!: string;
 }
 
 const SevModel = getModelForClass(SevDatas);

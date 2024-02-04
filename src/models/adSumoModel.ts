@@ -1,4 +1,4 @@
-import { getModelForClass, prop } from '@typegoose/typegoose';
+import { Severity, getModelForClass, prop } from '@typegoose/typegoose';
 
 class AdsumoQueries {
   @prop({ default: 'SavedSearchWithScheduleSyncDefinition' })
@@ -12,6 +12,7 @@ class AdsumoQueries {
     byReceiptTime: { default: false },
     viewName: { default: '' },
     parsingMode: { default: 'AutoParse' },
+    allowMixed: Severity.ALLOW,
   })
   public search!: {
     queryText: string;
