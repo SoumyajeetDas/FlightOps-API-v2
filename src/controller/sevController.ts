@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
 import SevModel from '../models/sevModel';
 
-export const getSev = async (_req: Request, res: Response) => {
+export const getSev = async (
+  _req: Request,
+  res: Response,
+): Promise<Response<any, Record<string, any>> | undefined | void> => {
   try {
     // Sorting the data in descending order wrt timeOccured and ascending order with title
     const sevData = await SevModel.find().sort({ timeOccured: -1, title: 1 });
@@ -12,7 +15,7 @@ export const getSev = async (_req: Request, res: Response) => {
         message: 'No data to show',
       });
     }
-    return res.status(200).send({
+    res.status(200).send({
       status: '200 OK',
       length: sevData.length,
       data: {
@@ -20,14 +23,17 @@ export const getSev = async (_req: Request, res: Response) => {
       },
     });
   } catch (err: any) {
-    return res.status(500).send({
+    res.status(500).send({
       status: '500 Internal Server Error',
       message: err.message,
     });
   }
 };
 
-export const addSev = async (req: Request, res: Response) => {
+export const addSev = async (
+  req: Request,
+  res: Response,
+): Promise<Response<any, Record<string, any>> | undefined | void> => {
   try {
     if (!req.body) {
       return res.status(400).send({
@@ -37,19 +43,22 @@ export const addSev = async (req: Request, res: Response) => {
     }
     const newSev = await SevModel.create(req.body);
 
-    return res.status(201).send({
+    res.status(201).send({
       status: '201 Created',
       newSev,
     });
   } catch (err: any) {
-    return res.status(500).send({
+    res.status(500).send({
       status: '500 Internal Server Error',
       message: err.message,
     });
   }
 };
 
-export const updateSev = async (req: Request, res: Response) => {
+export const updateSev = async (
+  req: Request,
+  res: Response,
+): Promise<Response<any, Record<string, any>> | undefined | void> => {
   try {
     if (!req.params.id) {
       return res.status(400).send({
@@ -76,19 +85,22 @@ export const updateSev = async (req: Request, res: Response) => {
       },
     );
 
-    return res.status(200).send({
+    res.status(200).send({
       status: 'Data got updated',
       updatedSev,
     });
   } catch (err: any) {
-    return res.status(500).send({
+    res.status(500).send({
       status: '500 Internal Server Error',
       message: err.message,
     });
   }
 };
 
-export const deleteSev = async (req: Request, res: Response) => {
+export const deleteSev = async (
+  req: Request,
+  res: Response,
+): Promise<Response<any, Record<string, any>> | undefined | void> => {
   try {
     if (!req.params.id) {
       return res.status(400).send({
@@ -108,19 +120,22 @@ export const deleteSev = async (req: Request, res: Response) => {
 
     await SevModel.findByIdAndDelete(req.params.id);
 
-    return res.status(200).send({
+    res.status(200).send({
       status: '200 Ok',
       message: 'Data got deleted',
     });
   } catch (err: any) {
-    return res.status(500).send({
+    res.status(500).send({
       status: '500 Internal Server Error',
       message: err.message,
     });
   }
 };
 
-export const getStats = async (_req: Request, res: Response) => {
+export const getStats = async (
+  _req: Request,
+  res: Response,
+): Promise<Response<any, Record<string, any>> | undefined | void> => {
   try {
     // First groupby with the application name and then find the total sum and then sort with respect to the application name.
     // _id will have the application name.
@@ -143,7 +158,7 @@ export const getStats = async (_req: Request, res: Response) => {
       });
     }
 
-    return res.status(200).send({
+    res.status(200).send({
       status: '200 OK',
       length: data.length,
       data: {
@@ -151,7 +166,7 @@ export const getStats = async (_req: Request, res: Response) => {
       },
     });
   } catch (err: any) {
-    return res.status(500).send({
+    res.status(500).send({
       status: '500 Internal Server Error',
       message: err.message,
     });
