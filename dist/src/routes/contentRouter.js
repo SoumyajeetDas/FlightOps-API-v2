@@ -1,0 +1,24 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const adSumoController_1 = __importDefault(require("../controller/adSumoController"));
+const appInsightController_1 = __importDefault(require("../controller/appInsightController"));
+const criticalSystemController_1 = __importDefault(require("../controller/criticalSystemController"));
+const dbQueryController_1 = __importDefault(require("../controller/dbQueryController"));
+const mySumoControler_1 = __importDefault(require("../controller/mySumoControler"));
+const opsCentralController_1 = __importDefault(require("../controller/opsCentralController"));
+const pathController_1 = __importDefault(require("../controller/pathController"));
+const triageController_1 = __importDefault(require("../controller/triageController"));
+const router = express_1.default.Router();
+router.get('/adelesumoquery', adSumoController_1.default);
+router.get('/appInsight', appInsightController_1.default);
+router.get('/criticalsystem', criticalSystemController_1.default);
+router.get('/dbQuery', dbQueryController_1.default);
+router.get('/mysumoquery', mySumoControler_1.default);
+router.get('/opsCentral', opsCentralController_1.default);
+router.get('/paths', pathController_1.default);
+router.get('/triage', triageController_1.default);
+exports.default = router;
