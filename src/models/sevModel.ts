@@ -15,30 +15,37 @@ class SevDatas {
 
   @prop({
     required: [true, 'Please enter the application type'],
-    enum: [
-      'ACARS',
-      'Aircraft Performance',
-      'FOGS',
-      'Jetplan',
-      'Pilot Briefing',
-      'QXEFB',
-      'S4A',
-      'VisOps',
-      'VisOps DB',
-      'WAM',
-      'Weather',
-      'WebSendTimes',
-      'Related to other Team',
-      'Multiple System Down',
-      'FlightEventsPublisherSvc',
-      'ESM/FSM',
-    ],
+
+    enum: {
+      values: [
+        'ACARS',
+        'Aircraft Performance',
+        'FOGS',
+        'Jetplan',
+        'Pilot Briefing',
+        'QXEFB',
+        'S4A',
+        'VisOps',
+        'VisOps DB',
+        'WAM',
+        'Weather',
+        'WebSendTimes',
+        'Related to other Team',
+        'Multiple System Down',
+        'FlightEventsPublisherSvc',
+        'ESM/FSM',
+      ],
+      message: 'Please enter the correct application type',
+    },
   })
   public applications!: string;
 
   @prop({
     required: [true, 'Please enter the type of Ticket'],
-    enum: ['Sev1', 'Sev2'],
+    enum: {
+      values: ['Sev1', 'Sev2'],
+      message: 'Please enter the correct ticket type',
+    },
   })
   public ticketType!: string;
 

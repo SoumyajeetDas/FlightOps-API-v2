@@ -2,6 +2,7 @@ import express from 'express';
 import { Response } from 'express';
 import cors from 'cors';
 import contentRouter from './routes/contentRouter';
+import sevRouter from './routes/sevRouter';
 
 const app = express();
 
@@ -25,7 +26,7 @@ app.use(
 
 app.use('/api/v1/fops/contents', contentRouter);
 
-// app.use("/api/v1/fops/sevs",sevRouter)
+app.use('/api/v1/fops/sevs', sevRouter);
 
 // 404 Error
 app.all('*', (res: Response) => {
