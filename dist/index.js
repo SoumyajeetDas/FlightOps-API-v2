@@ -27,7 +27,6 @@ mongoose_1.default
 });
 // Configuring port number
 let port = process.env.NODE_ENV === 'production' ? process.env.PORT || 5000 : 6000;
-console.log(port);
 app_1.default.listen(port, () => {
     console.log('Connected to the port : ', port);
 });
